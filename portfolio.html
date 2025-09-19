@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desola Sobamowo-Harrison | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7e22ce;
+            --accent: #ec4899;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 5rem;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(126, 34, 206, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .education {
+            margin-top: 2.5rem;
+        }
+
+        .education-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(126, 34, 206, 0.05) 100%);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li i {
+            color: var(--success);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-role {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .experience-company {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-details {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .experience-details li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-details li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Activities Section */
+        .activities {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(126, 34, 206, 0.05) 100%);
+        }
+
+        .activity-item {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .activity-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .activity-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-info h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-info h3 span {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 1001;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Desola <span>S-H</span></div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#activities">Activities</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Desola Sobamowo-Harrison</h1>
+                <p>Information Systems & Analytics Professional | Data Analyst | Business Intelligence Specialist</p>
+                <div class="hero-btns">
+                    <a href="#experience" class="btn">View My Experience</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(510) 825-4419</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>desola.harrison@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/desola-harrison" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Information Systems & Analytics Student</h3>
+                    <p>I am an Information Systems & Analytics student at Louisiana State University with a passion for data-driven decision making, business intelligence, and technology solutions. My experience spans business analysis, data analytics, market research, and web development.</p>
+                    <p>I'm passionate about leveraging data to drive business decisions and create innovative solutions to complex problems.</p>
+                </div>
+                <div class="education fade-in">
+                    <div class="education-item">
+                        <h4>Louisiana State University (LSU), Baton Rouge, LA</h4>
+                        <p><strong>Degree:</strong> Bachelor of Science, Information Systems & Analytics</p>
+                        <p><strong>Minor:</strong> Analytics</p>
+                        <p><strong>Graduation:</strong> December 2026</p>
+                        <p><strong>GPA:</strong> 3.3</p>
+                        <p><strong>Related Coursework:</strong> Introduction to Programming, Design of I.S. Solutions, Data & Info Management, Introduction to Management Information Systems, Business Statistics & Analytics</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Certifications</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category fade-in">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> SQL</li>
+                        <li><i class="fas fa-check-circle"></i> Python</li>
+                        <li><i class="fas fa-check-circle"></i> HTML</li>
+                        <li><i class="fas fa-check-circle"></i> CSS</li>
+                        <li><i class="fas fa-check-circle"></i> JavaScript</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Data Tools</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> Microsoft Excel (PivotTables, VLOOKUP, Macros)</li>
+                        <li><i class="fas fa-check-circle"></i> Power BI</li>
+                        <li><i class="fas fa-check-circle"></i> Tableau</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Certifications</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-award"></i> Google Data Analytics Certification</li>
+                        <li><i class="fas fa-award"></i> Google Project Management Certification</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category fade-in">
+                    <h3>Other Skills</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-star"></i> Data Analysis</li>
+                        <li><i class="fas fa-star"></i> Business Analysis</li>
+                        <li><i class="fas fa-star"></i> Market Research</li>
+                        <li><i class="fas fa-star"></i> Business Intelligence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Experience</h2>
+            </div>
+            
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Business Analyst</h3>
+                        <p class="experience-company">SNF, Plaquemine, LA</p>
+                    </div>
+                </div>
+                <ul class="experience-details">
+                    <li>Designed a data-driven Product Reclassification & Blend Matrix, applying hierarchy rules and visual analytics to streamline product categorization and support faster operational decisions.</li>
+                    <li>Conducted quantitative analysis of non-conforming warehouse inventory, identifying allocation inefficiencies and modeling space utilization improvements to increase warehouse capacity.</li>
+                    <li>Analyzed EHS chemical approval data, uncovering compliance gaps in SDS/MSDS records and recommending process controls to mitigate safety and regulatory risks.</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Web3 Security Data Analyst Extern</h3>
+                        <p class="experience-company">Webacy, Remote</p>
+                    </div>
+                </div>
+                <ul class="experience-details">
+                    <li>Analyzed and categorized smart contract vulnerabilities, validated data labels, and identified prevalent risks through frequency and correlation analysis.</li>
+                    <li>Conducted cluster analysis using unsupervised machine learning to profile smart contract risks effectively.</li>
+                    <li>Leveraged Excel and Tableau for data manipulation, analysis, and visualization to uncover actionable insights into smart contract vulnerabilities.</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Market Research Extern</h3>
+                        <p class="experience-company">National Research Group, Remote</p>
+                    </div>
+                </div>
+                <ul class="experience-details">
+                    <li>Informed strategic decision-making as a result of uncovering critical insights to workplace & labor management policy within the Asia-Pacific region.</li>
+                    <li>Identified and shortlisted the top 8 policy influencers driving workplace and labor management advancements in the Asia-Pacific region based on their engagement strategies, contributions, and impact.</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-role">Computer Science Intern</h3>
+                        <p class="experience-company">Google, Remote</p>
+                    </div>
+                </div>
+                <ul class="experience-details">
+                    <li>Selected for Google's Computer Science Summer Institute (CSSI), a competitive and intensive 4-week programming program for rising college freshmen.</li>
+                    <li>Collaborated with Google software engineers and peers to construct intricate websites (including APIs) from start to finish.</li>
+                    <li>Developed effective communication, teamwork, collaboration, and project management skills for technical development.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section id="activities" class="activities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Activities</h2>
+            </div>
+            
+            <div class="activity-item fade-in">
+                <h3>Volunteer, Church Media Operations</h3>
+                <ul class="experience-details">
+                    <li>Managed audio-visual systems for live events streamed to thousands of viewers across continents.</li>
+                    <li>Coordinated with team members to troubleshoot and ensure smooth operations during events.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Desola <span>Sobamowo-Harrison</span></h3>
+                    <p>Information Systems & Analytics Professional with expertise in data analysis, business intelligence, and technology solutions.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/desola-harrison" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-info">
+                    <h3>Contact <span>Info</span></h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(510) 825-4419</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>desola.harrison@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/desola-harrison" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Desola Sobamowo-Harrison. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.querySelector('body');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Scroll animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('appear');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+        
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+    </script>
+</body>
+</html>
